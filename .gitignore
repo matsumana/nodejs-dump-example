@@ -10,8 +10,11 @@ dist/
 # vscode
 .vscode
 
+# Diagnostic report
+report.*.json
+
 # heap dumnp
 *.heapsnapshot
 
-# Diagnostic report
-report.*.json
+# core dump
+core.*
