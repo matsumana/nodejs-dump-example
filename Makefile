@@ -30,7 +30,7 @@ install-llnode:
 .PHONY: run-app
 run-app:
 	# ref: https://nodejs.org/dist/latest-v14.x/docs/api/report.html
-	node --report-on-signal ./dist/bundle.js
+	node --report-uncaught-exception --report-on-signal --report-on-fatalerror ./dist/bundle.js
 
 .PHONY: take-diagnostic-report
 take-diagnostic-report:
