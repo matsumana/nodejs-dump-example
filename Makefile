@@ -8,7 +8,7 @@ clean-build:
 
 .PHONY: docker-run-with-bash
 docker-run-with-bash:
-	docker container run --name nodejs-dump-example --rm -it -p 8080:8080 -v "$(PWD)":/app node:14.17.6-bullseye /bin/bash
+	docker container run --name nodejs-dump-example --rm -it -p 8080:8080 -v "$(PWD)":/app node:14.17.6-bullseye /bin/bash -c 'cd /app && make run-app'
 
 .PHONY: docker-login-with-bash
 docker-login-with-bash:

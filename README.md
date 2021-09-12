@@ -11,9 +11,6 @@ $ make clean-build
 
 ```
 $ make docker-run-with-bash
-
-# cd /app
-# make run-app
 ```
 
 <br>
