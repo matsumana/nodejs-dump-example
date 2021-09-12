@@ -54,9 +54,9 @@ $ make docker-login-with-bash
 
 ### Node.js
 
-- [V8 | Node.js v14.17.6 Documentation](https://nodejs.org/dist/latest-v14.x/docs/api/v8.html)
-- [Diagnostic report | Node.js v14.17.6 Documentation](https://nodejs.org/dist/latest-v14.x/docs/api/report.html)
+-   [V8 | Node.js v14.17.6 Documentation](https://nodejs.org/dist/latest-v14.x/docs/api/v8.html)
+-   [Diagnostic report | Node.js v14.17.6 Documentation](https://nodejs.org/dist/latest-v14.x/docs/api/report.html)
 
 ### llnode
 
-- [llnode](https://github.com/nodejs/llnode)
+-   [llnode](https://github.com/nodejs/llnode)
