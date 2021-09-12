@@ -1,3 +1,7 @@
+.PHONY: yarn-install
+yarn-install:
+	yarn install
+
 .PHONY: clean-build
 clean-build:
 	yarn clean && yarn fix && yarn lint && yarn build
@@ -17,13 +21,31 @@ install-gdb:
 .PHONY: install-llnode
 install-llnode:
 	apt update && \
-		apt install -y liblldb-9 liblldb-9-dev make g++ && \
-		ln -s /usr/bin/lldb-9 /usr/bin/lldb && \
-		mkdir /llnode && \
-		cd /llnode && \
-		npm install llnode
+	apt install -y liblldb-9 liblldb-9-dev make g++ && \
+	ln -s /usr/bin/lldb-9 /usr/bin/lldb && \
+	mkdir /llnode && \
+	cd /llnode && \
+	npm install llnode
 
 .PHONY: run-app
 run-app:
 	# ref: https://nodejs.org/dist/latest-v14.x/docs/api/report.html
 	node --report-on-signal ./dist/bundle.js
+
+.PHONY: take-diagnostic-report
+take-diagnostic-report:
+	# ref: https://nodejs.org/dist/latest-v14.x/docs/api/report.html
+	kill -USR2 $$(ps aux | grep './dist/bundle.j[s]' | awk '{print $$2}')
+
+.PHONY: take-heap-dump
+take-heap-dump:
+	kill -USR1 $$(ps aux | grep './dist/bundle.j[s]' | awk '{print $$2}')
+
+.PHONY: take-core-dump
+take-core-dump:
+	gcore $$(ps aux | grep './dist/bundle.j[s]' | awk '{print $$2}')
+
+.PHONY: load-core-dump-with-lldb
+load-core-dump-with-lldb:
+	cd /llnode && \
+	npx llnode $$(which node) -c /app/core.$$(ps aux | grep './dist/bundle.j[s]' | awk '{print $$2}')
