@@ -46,8 +46,8 @@ take-heap-dump:
 take-core-dump:
 	gcore $$(ps aux | grep './dist/bundle.j[s]' | awk '{print $$2}')
 
-.PHONY: load-core-dump-with-lldb
-load-core-dump-with-lldb:
+.PHONY: load-core-dump-with-llnode
+load-core-dump-with-llnode:
 	# ref: https://github.com/nodejs/llnode
 	cd /llnode && \
 	npx llnode $$(which node) -c /app/core.$$(ps aux | grep './dist/bundle.j[s]' | awk '{print $$2}')
