@@ -39,6 +39,7 @@ take-diagnostic-report:
 
 .PHONY: take-heap-dump
 take-heap-dump:
+	# https://nodejs.org/dist/latest-v14.x/docs/api/v8.html
 	kill -USR1 $$(ps aux | grep './dist/bundle.j[s]' | awk '{print $$2}')
 
 .PHONY: take-core-dump
