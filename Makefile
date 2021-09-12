@@ -47,5 +47,6 @@ take-core-dump:
 
 .PHONY: load-core-dump-with-lldb
 load-core-dump-with-lldb:
+	# ref: https://github.com/nodejs/llnode
 	cd /llnode && \
 	npx llnode $$(which node) -c /app/core.$$(ps aux | grep './dist/bundle.j[s]' | awk '{print $$2}')
