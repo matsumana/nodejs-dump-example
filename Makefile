@@ -14,6 +14,15 @@ docker-login-with-bash:
 install-gdb:
 	apt update && apt install -y gdb
 
+.PHONY: install-llnode
+install-llnode:
+	apt update && \
+		apt install -y liblldb-9 liblldb-9-dev make g++ && \
+		ln -s /usr/bin/lldb-9 /usr/bin/lldb && \
+		mkdir /llnode && \
+		cd /llnode && \
+		npm install llnode
+
 .PHONY: run-app
 run-app:
 	# ref: https://nodejs.org/dist/latest-v14.x/docs/api/report.html
