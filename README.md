@@ -16,23 +16,25 @@ $ make docker-run-with-bash
 # make run-app
 ```
 
-## How to setup a Docker container
+<br>
 
-```
-$ make docker-login-with-bash
+---
 
-# cd /app
-# make install-gdb
-# make install-llnode
-```
-
-## How to take dumps
+## How to take a diagnostic report
 
 ```
 $ make docker-login-with-bash
 
 # cd /app
 # make take-diagnostic-report
+```
+
+## How to take a heap dump
+
+```
+$ make docker-login-with-bash
+
+# cd /app
 # make take-heap-dump
 ```
 
@@ -42,6 +44,8 @@ $ make docker-login-with-bash
 $ make docker-login-with-bash
 
 # cd /app
+# make install-gdb
+# make install-llnode
 # make take-core-dump
 # make load-core-dump-with-llnode
 ```
