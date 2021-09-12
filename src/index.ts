@@ -5,8 +5,9 @@ import express, { Request, Response } from 'express';
 const port = process.env.PORT ?? 8080;
 const app = express();
 
-process.on('SIGUSR2', () => {
-    const fileName = `/tmp/${Date.now()}.heapsnapshot`;
+// ref: https://nodejs.org/dist/latest-v14.x/docs/api/v8.html
+process.on('SIGUSR1', () => {
+    const fileName = `./heapdump_${Date.now()}.heapsnapshot`;
 
     console.info(`Start taking the heap dump. [${fileName}]`);
 
@@ -19,6 +20,11 @@ process.on('SIGUSR2', () => {
 
 app.get('/', (_req: Request, res: Response) => {
     res.send('It works!');
+});
+
+app.get('/busy-loop', () => {
+    // eslint-disable-next-line no-constant-condition,no-empty
+    while (true) {}
 });
 
 app.listen(port, () => {
